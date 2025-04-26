@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>List of Documents Required - Re-issue of Passport</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    
+    .header {
+      background-color: #ffcc00;
+      padding: 20px;
+      text-align: center;
+      font-size: 2em;
+      font-weight: bold;
+      color: #000;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    
+    .container h1 {
+      font-size: 1.8em;
+      margin-bottom: 10px;
+    }
+    
+    .container p.notice {
+      font-size: 0.9em;
+      margin-bottom: 20px;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+    
+    .radio-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    
+    .radio-inline {
+      display: inline-flex;
+      align-items: center;
+    }
+    
+    .radio-inline input[type="radio"] {
+      margin-right: 5px;
+    }
+    
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+    
+    button {
+      padding: 10px 20px;
+      font-size: 1em;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    .btn-back {
+      background-color: #ccc;
+      color: #333;
+    }
+    
+    .btn-continue {
+      background-color: #007bff;
+      color: #fff;
+    }
+    
+    .note, .marriage-section {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 30px;
+    }
+    
+    .marriage-section ul {
+      list-style-type: disc;
+      margin-left: 20px;
+    }
+    
+    .required {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">Document Advisor</div>
+
+  <div class="container">
+    <h1>List of Documents Required - Re-issue of Passport</h1>
+    <p class="notice">Fields marked with an asterisk (<span class="required">*</span>) are mandatory</p>
+    
+    <!-- Type of Application -->
+    <div class="form-group">
+      <label>Type of Application <span class="required">*</span></label>
+      <div class="radio-group">
+        <div class="radio-inline">
+          <input type="radio" name="applicationType" id="normal" value="normal" checked>
+          <label for="normal">Normal</label>
+        </div>
+        <div class="radio-inline">
+          <input type="radio" name="applicationType" id="tatkaal" value="tatkaal">
+          <label for="tatkaal">Tatkaal</label>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Applicant Category -->
+    <div class="form-group">
+      <label>Applicant Category <span class="required">*</span></label>
+      <div class="radio-group">
+        <div class="radio-inline">
+          <input type="radio" name="applicantCategory" id="minor" value="minor">
+          <label for="minor">Minor</label>
+        </div>
+        <div class="radio-inline">
+          <input type="radio" name="applicantCategory" id="adult" value="adult" checked>
+          <label for="adult">Adult</label>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Employment Type -->
+    <div class="form-group">
+      <label>Employment Type <span class="required">*</span></label>
+      <div class="radio-group">
+        <div class="radio-inline">
+          <input type="radio" name="employmentType" id="govt" value="govt" checked>
+          <label for="govt">Government/PSU/Statutory Body</label>
+        </div>
+        <div class="radio-inline">
+          <input type="radio" name="employmentType" id="retired" value="retired">
+          <label for="retired">Retired Government Official</label>
+        </div>
+        <div class="radio-inline">
+          <input type="radio" name="employmentType" id="others" value="others">
+          <label for="others">Others</label>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Address Difference -->
+    <div class="form-group">
+      <label>Is applicant's present address different from that in the existing passport? <span class="required">*</span></label>
+      <div class="radio-group">
+        <div class="radio-inline">
+          <input type="radio" name="addressDiff" id="addressYes" value="yes">
+          <label for="addressYes">Yes</label>
+        </div>
+        <div class="radio-inline">
+          <input type="radio" name="addressDiff" id="addressNo" value="no" checked>
+          <label for="addressNo">No</label>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Buttons -->
+    <div class="buttons">
+      <button type="button" class="btn-back">Back</button>
+      <button type="submit" class="btn-continue">Continue</button>
+    </div>
+    
+    <!-- Note Section -->
+    <div class="note">
+      <p><strong>Note:</strong> Applicants are required to furnish original documents along with one set of self-attested photocopies of the same at the Passport Seva Kendra (PSK) for processing.</p>
+    </div>
+    
+    <!-- Marriage, Divorce and Separated Case Section -->
+    <div class="marriage-section">
+      <p><strong>Marriage, Divorce and Separated Case</strong></p>
+      <p>For addition of spouse name in passport:</p>
+      <ul>
+        <li>MARRIAGE CERTIFICATE or</li>
+        <li>Joint Photo Declaration signed by both husband and wife (Annexure J)</li>
+      </ul>
+      <p>For deletion of Spouse Name:</p>
+      <ul>
+        <li>Divorce Order/Decree</li>
+      </ul>
+      <p>For Change of Spouse Name:</p>
+      <ul>
+        <li>Divorce Order/Decree or Death Certificate of first spouse and [any additional supporting document]</li>
+      </ul>
+    </div>
+  </div>
+
+</body>
+</html>

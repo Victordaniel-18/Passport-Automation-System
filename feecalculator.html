@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fee Calculator - Passport Seva</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      text-align: center;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .form-group {
+      margin-bottom: 15px;
+      text-align: left;
+    }
+    select, button {
+      width: 100%;
+      padding: 10px;
+      font-size: 1em;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+    }
+    button {
+      background-color: #ffcc00;
+      font-size: 1.2em;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .result {
+      margin-top: 15px;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Passport Fee Calculator</h2>
+
+    <div class="form-group">
+      <label for="service-type">Type of Service:</label>
+      <select id="service-type">
+        <option value="">Select</option>
+        <option value="fresh">Fresh Passport</option>
+        <option value="pcc">PCC (Police Clearance Certificate)</option>
+        <option value="background-verification">Background Verification for GEP</option>
+        <option value="reissue">Re-issue of Passport</option>
+      </select>
+    </div>
+
+    <div class="form-group" id="age-group" style="display: none;">
+      <label for="applicant-age">Applicant's Age:</label>
+      <select id="applicant-age">
+        <option value="">Select Age Category</option>
+        <option value="under15">Less than 15 years</option>
+        <option value="15to18">Between 15-18 years</option>
+        <option value="18above">18 years and above</option>
+      </select>
+    </div>
+
+    <div class="form-group" id="booklet-group" style="display: none;">
+      <label for="booklet-pages">Number of Pages in Booklet:</label>
+      <select id="booklet-pages">
+        <option value="">Select Booklet Pages</option>
+        <option value="36">36 pages</option>
+        <option value="60">60 pages</option>
+      </select>
+    </div>
+
+    <div class="form-group" id="scheme-group" style="display: none;">
+      <label for="scheme">Required Scheme:</label>
+      <select id="scheme">
+        <option value="normal">Normal</option>
+        <option value="tatkaal">Tatkaal</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <button onclick="calculateFee()">Calculate Fee</button>
+    </div>
+
+    <div class="result" id="feeResult"></div>
+  </div>
+
+  <script>
+    document.getElementById("service-type").addEventListener("change", function() {
+      var serviceType = this.value;
+      document.getElementById("age-group").style.display = (serviceType === "fresh" || serviceType === "reissue") ? "block" : "none";
+      document.getElementById("scheme-group").style.display = (serviceType === "fresh" || serviceType === "reissue") ? "block" : "none";
+      document.getElementById("booklet-group").style.display = "none"; // Hide initially
+
+      if (serviceType === "pcc" || serviceType === "background-verification") {
+        document.getElementById("feeResult").innerText = "Estimated Fee: ₹500";
+      } else {
+        document.getElementById("feeResult").innerText = "";
+      }
+    });
+
+    document.getElementById("applicant-age").addEventListener("change", function() {
+      var age = this.value;
+      document.getElementById("booklet-group").style.display = (age === "18above") ? "block" : "none";
+    });
+
+    function calculateFee() {
+      var serviceType = document.getElementById("service-type").value;
+      var age = document.getElementById("applicant-age").value;
+      var scheme = document.getElementById("scheme").value;
+      var pages = document.getElementById("booklet-pages").value;
+      var fee = 0;
+
+      if (!serviceType || serviceType === "select") {
+        alert("Please select a valid service type.");
+        return;
+      }
+
+      if (serviceType === "pcc" || serviceType === "background-verification") {
+        fee = 500;
+      } else if (serviceType === "fresh") {
+        if (!age) {
+          alert("Please select the applicant's age.");
+          return;
+        }
+        if (!scheme) {
+          alert("Please select the required scheme.");
+          return;
+        }
+
+        if (age === "under15") {
+          fee = (scheme === "tatkaal") ? 1350 : 900;
+        } else if (age === "15to18") {
+          fee = (scheme === "tatkaal") ? 1700 : 1200;
+        } else if (age === "18above") {
+          if (!pages) {
+            alert("Please select the number of pages in the booklet.");
+            return;
+          }
+          fee = (pages === "36") ? (scheme === "tatkaal" ? 3500 : 1500) : (scheme === "tatkaal" ? 4000 : 2000);
+        }
+      } else if (serviceType === "reissue") {
+        if (!scheme) {
+          alert("Please select the required scheme.");
+          return;
+        }
+        fee = (scheme === "tatkaal") ? 3000 : 1000;
+      }
+
+      document.getElementById("feeResult").innerText = "Estimated Fee: ₹" + fee;
+    }
+  </script>
+</body>
+</html>

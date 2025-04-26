@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grievance/Feedback</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .header {
+            background-color: #ffcc00;
+            padding: 20px;
+            text-align: center;
+            font-size: 2em;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container h2 {
+            text-align: center;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-size: 1em;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+        }
+
+        .button {
+            background-color: #ffcc00;
+            color: #000;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .button:hover {
+            background-color: #ff9900;
+        }
+
+        .mandatory {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">Passport Seva - Grievance/Feedback</div>
+
+    <div class="container">
+        <div class="form-container">
+            <h2>Grievance/Feedback Form</h2>
+            <form action="submit_feedback.php" method="POST">
+
+                <h3>PASSPORT REFERENCE DETAILS</h3>
+                <div class="form-group">
+                    <label for="reference-number">Your Reference Number <span class="mandatory">*</span></label>
+                    <select id="reference-number" name="reference-number" onchange="toggleReferenceInput()" required>
+                        <option value="Select">Select</option>
+                        <option value="application-reference">Application Reference Number</option>
+                        <option value="file-number">File Number</option>
+                        <option value="passport-number">Passport Number</option>
+                        <option value="no-passport-reference">No Passport Reference Number</option>
+                    </select>
+                </div>
+                <div class="form-group hidden" id="reference-input">
+                    <input type="text" id="reference-value" name="reference-value" required>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="passport-seva-kendra">Passport Seva Kendra <span class="mandatory">*</span></label>
+                    <select id="passport-seva-kendra" name="passport-seva-kendra" required>
+                        <option value="Select">Select</option>
+                        <option value="anantapur">Anantapur</option>
+                        <option value="bapatla">Bapatla</option>
+                        <option value="chittoor">Chittoor</option>
+                        <option value="gudiwada">Gudiwada</option>
+                        <option value="guntur">Guntur</option>
+                        <option value="hindupur">Hindupur</option>
+                        <option value="kadapa">Kadapa</option>
+                        <option value="nandyala">Nandyala</option>
+                        <option value="narasaraopet">Narasaraopet</option>
+                        <option value="nellore">Nellore</option>
+                        <option value="ongole">Ongole</option>
+                        <option value="railway-kodur">Railway Kodur</option>
+                        <option value="kadapa">Kadapa</option>
+                    </select>
+                </div>
+
+                <h3>APPLICANT DETAILS</h3>
+                <div class="form-group">
+                    <label for="applicant-name">Applicant Name (Max 90 Characters) <span class="mandatory">*</span></label>
+                    <input type="text" id="applicant-name" name="applicant-name" maxlength="90" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="dob">Date of Birth (DD/MM/YYYY) <span class="mandatory">*</span></label>
+                    <input type="date" id="dob" name="dob" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="current-address">Current Address (Max 100 Characters) <span class="mandatory">*</span></label>
+                    <input type="text" id="current-address" name="current-address" maxlength="100" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="contact">Mobile Number/Landline</label>
+                    <input type="text" id="contact" name="contact">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-Mail (Max 50 Characters) <span class="mandatory">*</span></label>
+                    <input type="email" id="email" name="email" maxlength="50" required>
+                </div>
+
+                <h3>APPLICATION DETAILS</h3>
+                <div class="form-group">
+                    <label for="category">Category <span class="mandatory">*</span></label>
+                    <select id="category" name="category" required>
+                        <option value="Select">Select</option>
+                        <option value="police-issues">Police Related Issues</option>
+                        <option value="portal-issues">Portal Related Issues</option>
+                        <option value="call-centre">Complaint against Call Centre</option>
+                        <option value="delay-application">Delay in Application Submission</option>
+                        <option value="delay-processing">Delay in processing of Passport</option>
+                        <option value="postal-issues">Postal Related Issues</option>
+                        <option value="appointment-issues">Appointment Related Issues</option>
+                        <option value="miscellaneous">Miscellaneous</option>
+                        <option value="passport-issues">Passport Booklet Related Issues</option>
+                        <option value="feedback">Feedback</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="sub-category">Sub-Category <span class="mandatory">*</span></label>
+                    <select id="sub-category" name="sub-category" required>
+                        <option value="Select">Select</option>
+                        <option value="delay-appointment">Delay in granting appointment date at PBO/PSK</option>
+                        <option value="appointments-not-honored">Appointments not honored by the Passport Official</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="request-mode">Request Mode <span class="mandatory">*</span></label>
+                    <select id="request-mode" name="request-mode" required>
+                        <option value="          ">    </option>
+                        <option value="online">Online</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description (Max 3000 Characters) <span class="mandatory">*</span></label>
+                    <textarea id="description" name="description" maxlength="3000" rows="5" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="service-request-date">Service Request Submission Date <span class="mandatory">*</span></label>
+                    <input type="date" id="service-request-date" name="service-request-date" required>
+                </div>
+
+                <div class="form-group captcha">
+                    <label>Enter Characters displayed:</label><br>
+                    
+                    <span id="captcha-text" class="captcha-box"></span>
+                    <button type="button" onclick="generateCaptcha()">&#x21bb;</button><br>
+                    <input type="text" id="captcha" name="captcha" required>
+                </div>
+                
+                <button type="submit"></button>
+            </form>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 Passport Automation System | All Rights Reserved</p>
+    </div>
+
+    <script>
+        function generateCaptcha() {
+            const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            let captcha = "";
+            for (let i = 0; i < 6; i++) {
+                captcha += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            document.getElementById("captcha-text").textContent = captcha;
+        }
+
+        function validateCaptcha() {
+            const enteredCaptcha = document.getElementById("captcha").value;
+            const actualCaptcha = document.getElementById("captcha-text").textContent;
+            if (enteredCaptcha !== actualCaptcha) {
+                alert("Incorrect CAPTCHA. Please try again.");
+                generateCaptcha();
+                return false;
+            }
+            return true;
+        }
+
+        window.onload = generateCaptcha;
+
+    </script>
+
+</body>
+
+</html>

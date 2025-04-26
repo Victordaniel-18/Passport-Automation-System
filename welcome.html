@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Passport Seva</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    .header {
+      background-color: #ffcc00;
+      padding: 20px;
+      text-align: center;
+      font-size: 2em;
+      font-weight: bold;
+      color: #000;
+      position: relative;
+    }
+
+    /* Updated Profile Button */
+    .btn-profile {
+      background-color: #ffcc00;
+      color: #000;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      text-decoration: none;
+      position: absolute;
+      right: 20px;
+      top: 20px;
+    }
+
+    .btn-profile:hover {
+      background-color: #e6b800;
+      color: #fff;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .grid-item {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: center;
+      font-size: 1.2em;
+      color: #333;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .grid-item img {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 10px;
+    }
+
+    .grid-item:hover {
+      background-color: #ffcc00;
+      color: #fff;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #333;
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      .grid-container {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .grid-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    Passport Seva
+    <div class="profile">
+      <a href="profile.html" class="btn-profile">Profile</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="grid-container">
+      <div class="grid-item">
+        <a href="newuser.html" style="text-decoration: none; color: inherit;">
+          <img src="login_logo.png" alt="Register">
+          <h3>New User Register</h3>
+        </a>
+      </div>
+      <div class="grid-item">
+        <a href="statustracker.html" style="text-decoration: none; color: inherit;">
+          <img src="status_logo-removebg-preview.png" alt="Status Check">
+          <h3>Status Check</h3>
+        </a>
+      </div>
+      <div class="grid-item">
+        <a href="appoinment2.html" style="text-decoration: none; color: inherit;">
+          <img src="appointment_logo-removebg-preview.png" alt="Appointment Available">
+          <h3>Appointment Available</h3>
+        </a>
+      </div>
+      <div class="grid-item">
+        <a href="Document.html" style="text-decoration: none; color: inherit;">
+          <img src="advisor_logo-removebg-preview.png" alt="Document Advisor">
+          <h3>Document Advisor</h3>
+        </a>
+      </div>
+      <div class="grid-item">
+        <a href="feecalculator.html" style="text-decoration: none; color: inherit;">
+          <img src="fee_logo-removebg-preview.png" alt="Fee Calculator">
+          <h3>Fee Calculator</h3>
+        </a>
+      </div>
+      <div class="grid-item">
+        <a href="locatecentre.html" style="text-decoration: none; color: inherit;">
+          <img src="location_logo-removebg-preview.png" alt="Locate Centre">
+          <h3>Locate Centre</h3>
+        </a>
+      </div>
+      <div class="grid-item">
+        <a href="feedback.html" style="text-decoration: none; color: inherit;">
+          <img src="feed_logo-removebg-preview.png" alt="Feedback">
+          <h3>Feedback</h3>
+        </a>
+      </div>
+      <div class="grid-item">
+        <a href="FAQ.html" style="text-decoration: none; color: inherit;">
+          <img src="FQA_logo-removebg-preview.png" alt="FAQ">
+          <h3>FAQ</h3>
+        </a>
+      </div>
+      <div class="grid-item">
+        <a href="contact.html" style="text-decoration: none; color: inherit;">
+          <img src="contact_logo-removebg-preview.png" alt="Contact Us">
+          <h3>Contact Us</h3>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>&copy; 2025 Passport Automation System | All Rights Reserved</p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Background Verification - GEP</title>
+  <style>
+    /* Base Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+    .header {
+      background-color: #ffcc00;
+      padding: 20px;
+      text-align: center;
+      font-size: 2em;
+      font-weight: bold;
+      color: #000;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    h2, h3 {
+      margin-top: 0;
+    }
+    /* Table Styles */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    /* Form & Button Styles */
+    form {
+      margin-bottom: 20px;
+    }
+    label {
+      font-size: 1em;
+      margin-right: 20px;
+      cursor: pointer;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 1em;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      background-color: #007bff;
+      color: #fff;
+    }
+    .hidden {
+      display: none;
+    }
+    /* Footer Styles */
+    .footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #333;
+      color: white;
+      margin-top: 20px;
+    }
+    @media (max-width: 768px) {
+      .container {
+        padding: 10px;
+      }
+    }
+  </style>
+  <script>
+    function goBack() {
+      window.history.back();
+    }
+    function toggleTable() {
+      // Get references to the radio buttons and both tables.
+      const yesSelected = document.getElementById("yes").checked;
+      const noSelected = document.getElementById("no").checked;
+      const tableYes = document.getElementById("documentTableYes");
+      const tableNo = document.getElementById("documentTableNo");
+      
+      // Show/hide tables based on the selection.
+      if (yesSelected) {
+        tableYes.classList.remove("hidden");
+        tableNo.classList.add("hidden");
+      } else if (noSelected) {
+        tableNo.classList.remove("hidden");
+        tableYes.classList.add("hidden");
+      } else {
+        tableYes.classList.add("hidden");
+        tableNo.classList.add("hidden");
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="header">Document Advisor</div>
+  <div class="container">
+    <h2>List of Documents Required for Background Verification for GEP</h2>
+    <p><strong>Is applicant's present address different from that in the existing passport?*</strong></p>
+    <form>
+      <input type="radio" id="yes" name="address" value="Yes" onclick="toggleTable()">
+      <label for="yes">Yes</label>
+      <input type="radio" id="no" name="address" value="No" onclick="toggleTable()">
+      <label for="no">No</label>
+    </form>
+    <h3>Based on the specified details, the document(s) required is/are:</h3>
+    
+    <!-- Table for Yes Option -->
+    <table id="documentTableYes" class="hidden">
+      <tr>
+        <th>Document Code</th>
+        <th>Document(s)</th>
+        <th>Mandatory (M) / Optional (O) / Conditional (C)</th>
+      </tr>
+      <tr>
+        <td>8017</td>
+        <td>Old passport in original with self-attested photocopy of its first two and last two pages including ECR/Non-ECR page and page of observation (if any).</td>
+        <td>M</td>
+      </tr>
+      </tr>
+      <td>7001</td>
+        <td>Proof of Present Address <a href="#">List of Acceptable Documents</a></td>
+        <td>M</td>
+      <tr>
+        <td>8137</td>
+        <td>Pan card</td>
+        <td>M</td>
+      </tr>
+    </table>
+    
+    <!-- Table for No Option -->
+    <table id="documentTableNo" class="hidden">
+      <tr>
+        <th>Document Code</th>
+        <th>Document(s)</th>
+        <th>Mandatory (M) / Optional (O) / Conditional (C)</th>
+      </tr>
+      <tr>
+
+        <td>8017</td>
+        <td>Old passport in original with self-attested photocopy of its first two and last two pages including ECR/Non-ECR page and page of observation (if any).</td>
+        <td>M</td>
+      </tr>
+      <tr>
+        <td>8137</td>
+        <td>Pan card</td>
+        <td>M</td>
+      </tr>
+    </table>
+    
+    <p><strong>Note:</strong> Applicants are advised to visit their jurisdictional passport office's home page under Passport Office Page to know about additional documents required, if any.</p>
+    <p>The list of documents provided in the table above is indicative. The decision of APO/RPO shall be considered final.</p>
+    <button onclick="goBack()">Back</button>
+  </div>
+  <div class="footer">
+    <p>&copy; 2025 Passport Automation System | All Rights Reserved</p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passport Office Finder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .header {
+            background-color: #ffcc00;
+            padding: 20px;
+            text-align: center;
+            font-size: 2em;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .form-section {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        select, input[type="text"], button {
+            padding: 10px;
+            font-size: 1em;
+            width: 100%;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #ffcc00;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #ff9900;
+        }
+
+        .captcha-box {
+            font-size: 1.5em;
+            font-weight: bold;
+            background-color: #ddd;
+            display: inline-block;
+            padding: 10px;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+    </style>
+    <script>
+        function generateCaptcha() {
+            const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            let captcha = "";
+            for (let i = 0; i < 4; i++) {
+                captcha += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            document.getElementById("captcha-text").textContent = captcha;
+        }
+
+        function validateCaptcha() {
+            const enteredCaptcha = document.getElementById("captcha").value;
+            const actualCaptcha = document.getElementById("captcha-text").textContent;
+            if (enteredCaptcha !== actualCaptcha) {
+                alert("Incorrect CAPTCHA. Please try again.");
+                generateCaptcha();
+                return false;
+            }
+            return true;
+        }
+
+        function showAddress() {
+            if (!validateCaptcha()) {
+                document.getElementById("addressDisplay").innerText = "";
+                return;
+            }
+            
+            var office = document.getElementById("officeSelect").value;
+            var addresses = {
+                "Vijayawada": "Regional Passport Office, Vijayawada, Andhra Pradesh.",
+                "Visakhapatnam": "Near P.F. Office, Beside Rythu Bazar, Marripalem VUDA Layout, NAD Post, Visakhapatnam, Andhra Pradesh-530009",
+                "Chennai": "Rayala Towers No. 2 and 3, IV Floor, Old No. 785, New No. 158, Anna Salai, Chennai, Tamil Nadu-600002",
+                "Kolkata": "Regional Passport Office, Kolkata, West Bengal.",
+                "Pune": "Regional Passport Office, Pune, Maharashtra.",
+                "Trivandrum": "Regional Passport Office, Trivandrum, Kerala."
+            };
+            document.getElementById("addressDisplay").innerText = addresses[office] || "Select a valid office";
+        }
+
+        window.onload = generateCaptcha;
+    </script>
+</head>
+<body>
+
+    <div class="header">Passport Seva</div>
+
+    <div class="container">
+        <div class="form-section">
+            <h2>Check Appointment Availability</h2>
+            
+            <label for="officeSelect">Passport Office</label>
+            <select id="officeSelect">
+                <option value="">Select Office</option>
+                <option value="Vijayawada">Vijayawada</option>
+                <option value="Visakhapatnam">Visakhapatnam</option>
+                <option value="Chennai">Chennai</option>
+                <option value="Kolkata">Kolkata</option>
+                <option value="Pune">Pune</option>
+                <option value="Trivandrum">Trivandrum</option>
+            </select>
+            
+            <div class="captcha">
+                <label>Enter Characters displayed:</label><br>
+                <span id="captcha-text" class="captcha-box"></span>
+                <button type="button" onclick="generateCaptcha()">&#x21bb;</button><br>
+                <input type="text" id="captcha" required>
+            </div>
+            
+            <button type="button" onclick="showAddress()">Check Appointment Availability</button>
+            
+            <h3>Address:</h3>
+            <p id="addressDisplay"></p>
+        </div>
+    </div>
+</body>
+</html>

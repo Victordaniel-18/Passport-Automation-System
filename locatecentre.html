@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Locate Centre - Passport Seva</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .header {
+            background-color: #ffcc00;
+            padding: 20px;
+            text-align: center;
+            font-size: 2em;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-size: 1.2em;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        .form-group button {
+            padding: 10px 20px;
+            background-color: #ffcc00;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2em;
+            color: #000;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        .form-group button:hover {
+            background-color: #ff9900;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="header">Locate Centre</div>
+
+    <div class="container">
+        <h2>Select the Centre for Passport Services</h2>
+
+        <div class="form-group">
+            <label for="centre-location">Choose a Location:</label>
+            <select id="centre-location" name="centre-location">
+                <option value="select">select</option>
+                <option value="passport-seva-kendra">Passport/Post Office Seva Kendra</option>
+                <option value="district-passport-cell">District Passport Cell</option>
+                <option value="police-station">Police Station</option>
+                <option value="mission-post-abroad">Mission/Post Abroad</option>
+                <option value="passport-office">Passport Office</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <button onclick="locateCentre()">Locate Centre</button>
+        </div>
+
+        <div class="form-group" id="centre-details" style="display: none;">
+            <h3>Centre Details:</h3>
+            <p id="centre-info"></p>
+        </div>
+
+        <div class="form-group">
+            <button onclick="cancelSelection()">Cancel</button>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 Passport Automation System | All Rights Reserved</p>
+    </div>
+
+    <script>
+        function locateCentre() {
+            var location = document.getElementById("centre-location").value;
+            var centreInfo = "";
+
+            // Display the details based on the selected location
+            switch (location) {
+                case "passport-seva-kendra":
+                    centreInfo = "Passport/Post Office Seva Kendra details: You can visit the nearest Seva Kendra to apply for your passport.";
+                    break;
+                case "district-passport-cell":
+                    centreInfo = "District Passport Cell details: District offices that assist with passport application processing.";
+                    break;
+                case "police-station":
+                    centreInfo = "Police Station details: For police verification, visit your local police station.";
+                    break;
+                case "mission-post-abroad":
+                    centreInfo = "Mission/Post Abroad details: Embassies and consulates located abroad for passport services.";
+                    break;
+                case "passport-office":
+                    centreInfo = "Passport Office details: Main offices where passport applications and queries are processed.";
+                    break;
+                default:
+                    centreInfo = "Please select a location.";
+            }
+
+            // Show the details
+            document.getElementById("centre-info").innerText = centreInfo;
+            document.getElementById("centre-details").style.display = "block";
+        }
+
+        function cancelSelection() {
+            // Reset the form
+            document.getElementById("centre-location").value = "";
+            document.getElementById("centre-details").style.display = "none";
+        }
+    </script>
+
+</body>
+
+</html>

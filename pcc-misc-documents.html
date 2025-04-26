@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document Advisor - PCC Issuance</title>
+  <style>
+    /* Base Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+    .header {
+      background-color: #ffcc00;
+      padding: 20px;
+      text-align: center;
+      font-size: 2em;
+      font-weight: bold;
+      color: #000;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    h2 {
+      margin-top: 0;
+    }
+    /* Table Styles */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    /* Radio Button and Misc Styles */
+    label {
+      font-size: 1em;
+      margin-right: 20px;
+      cursor: pointer;
+    }
+    .hidden {
+      display: none;
+    }
+    .footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #333;
+      color: white;
+      margin-top: 20px;
+    }
+    @media (max-width: 768px) {
+      .container {
+        padding: 10px;
+      }
+    }
+  </style>
+  <script>
+    function toggleTable() {
+      let yesOption = document.getElementById("yes").checked;
+      let noOption = document.getElementById("no").checked;
+      let yesTable = document.getElementById("documentTableYes");
+      let noTable = document.getElementById("documentTableNo");
+      if (yesOption) {
+        yesTable.classList.remove("hidden");
+        noTable.classList.add("hidden");
+      } else if (noOption) {
+        noTable.classList.remove("hidden");
+        yesTable.classList.add("hidden");
+      } else {
+        yesTable.classList.add("hidden");
+        noTable.classList.add("hidden");
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="header">Document Advisor</div>
+  <div class="container">
+    <h2>List of Documents Required for PCC Issuance</h2>
+    <p>Is applicant's present personal particulars changed in Passport and address different from that in the existing passport?</p>
+    <label>
+      <input type="radio" name="change" id="yes" onclick="toggleTable()"> Yes
+    </label>
+    <label>
+      <input type="radio" name="change" id="no" onclick="toggleTable()"> No
+    </label>
+    
+    <table id="documentTableYes" class="hidden">
+      <tr>
+        <th>Document Code</th>
+        <th>Document(s)</th>
+        <th>Mandatory(M)/Optional(O)/Conditional(C)</th>
+      </tr>
+      <tr>
+        <td>8017</td>
+        <td>
+          For applicants whose details in current PCC Application form are different than the Passport held then they have to apply for re-issue of the passport with changed/current particulars as provided in the PCC application form and a fresh Police Verification report may be generated. Only after re-issue of passport with changed/existing particulars, the PCC application against such reissued passport may be processed.<br>
+          Bring the passport in original with self-attested photocopy of its first two and last two pages including ECR/Non-ECR page and page of observation (if any).
+        </td>
+        <td>M</td>
+      </tr>
+      <tr>
+        <td>7001</td>
+        <td>Proof of Present Address <a href="#">List of Acceptable Documents</a></td>
+        <td>M</td>
+      </tr>
+    </table>
+    
+    <table id="documentTableNo" class="hidden">
+      <tr>
+        <th>Document Code</th>
+        <th>Document(s)</th>
+        <th>Mandatory(M)/Optional(O)/Conditional(C)</th>
+      </tr>
+      <tr>
+        <td>8017</td>
+        <td>
+          Old passport in original with self-attested photocopy of its first two and last two pages including ECR/Non-ECR page and page of observation (if any).
+        </td>
+        <td>M</td>
+      </tr>
+    </table>
+    
+    <p><strong>Note:</strong> Applicants are advised to visit their jurisdictional passport office's home page under Passport Office Page to know about additional documents required, if any.</p>
+    <p>The list of documents provided in the table above is indicative. The decision of APO/RPO shall be considered final.</p>
+    <button onclick="history.back()">Back</button>
+  </div>
+  <div class="footer">
+    <p>&copy; 2025 Passport Automation System | All Rights Reserved</p>
+  </div>
+</body>
+</html>

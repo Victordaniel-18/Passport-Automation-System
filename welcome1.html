@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passport Automation System</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #ffffff;
+            color: #333;
+        }
+        .header {
+            background: #ffcc00;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #000;
+            position: relative;
+        }
+        .profile-menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: inline-block;
+        }
+        .profile-menu button {
+            background-color: #ffcc00;
+            color: #000;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .profile-dropdown {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: #fff;
+            min-width: 160px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 4px;
+            z-index: 1;
+        }
+        .profile-dropdown a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .profile-dropdown a:hover {
+            background-color: #f2f2f2;
+        }
+        .profile-menu:hover .profile-dropdown {
+            display: block;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .grid-item {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            font-size: 1.2em;
+            color: #333;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .grid-item img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+        .grid-item:hover {
+            background-color: #ffcc00;
+            color: #fff;
+        }
+        .btn-login {
+            display: inline-block;
+            background: #ff9800;
+            color: #fff;
+            padding: 14px 29px;
+            text-decoration: none;
+            border-radius: 39px;
+            transition: 0.5s;
+            font-size: 19px;
+            font-weight: bold;
+            box-shadow: 0 5px 10px rgba(255, 152, 0, 0.4);
+            position: absolute;
+            right: 50%;
+            top: 60%;
+        }
+        .btn-login:hover {
+            background: #e68900;
+            transform: scale(1.08);
+            box-shadow: 0 6px 15px rgba(255, 152, 0, 0.6);
+        }
+        .footer {
+            margin-top: 59px;
+            font-size: 14px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            color: #333;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+        .footer a {
+            color: #ffcc00;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            .grid-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (max-width: 480px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="header">
+        Passport Automation System
+    </div>
+    <div class="container">
+        <h1>Welcome to the Passport Automation System</h1>
+        <p>Effortlessly apply for, track, and manage your passport online with our secure and user-friendly digital platform. Experience seamless processing, real-time status updates, and compliance with international travel regulations.</p>
+        <a href="loginweb.html" class="btn-login">Login</a>
+    </div>
+    <div class="footer">
+        <p>&copy;  2025 Passport Automation System. All rights reserved. | <a href="#">Terms & Conditions</a> | <a href="#">Privacy Policy</a></p>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+

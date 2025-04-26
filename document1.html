@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Document Advisor - Passport Seva</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    .header {
+      background-color: #ffcc00;
+      padding: 20px;
+      text-align: center;
+      font-size: 2em;
+      font-weight: bold;
+      color: #000;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    .options-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .option-item {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      font-size: 1.2em;
+      color: #333;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .option-item:hover {
+      background-color: #ffcc00;
+      color: #fff;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #333;
+      color: white;
+    }
+
+    .heading h1 {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+
+    .heading h2 {
+      font-size: 1.5em;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .radio-group {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 5px;
+    }
+
+    .radio-inline {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    input[type="radio"] {
+      margin-right: 5px;
+    }
+
+    a {
+      text-decoration: none;
+      color: #007bff;
+      font-size: 0.9em;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .note, .marriage-section, .dynamic-section {
+      background-color: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .btn-back, .btn-continue {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .btn-back {
+      background-color: #ccc;
+      color: #333;
+    }
+
+    .btn-continue {
+      background-color: #007bff;
+      color: #fff;
+    }
+
+    .required {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">Document Advisor</div>
+
+  <div class="container">
+    <div class="heading">
+      <h1>DOCUMENT ADVISOR</h1>
+      <h2>Documents Required for Fresh Passport</h2>
+    </div>
+
+    <p><small>Fields marked with <span class="required">*</span> are mandatory</small></p>
+
+    <!-- Type of Application -->
+    <div class="form-group">
+      <label for="applicationType">Type of Application <span class="required">*</span></label>
+      <div class="radio-group" id="applicationType">
+        <div class="radio-inline">
+          <input type="radio" name="applicationType" id="normal" value="normal" checked />
+          <label for="normal">Normal</label>
+        </div>
+        <div class="radio-inline">
+          <input type="radio" name="applicationType" id="tatkaal" value="tatkaal" />
+          <label for="tatkaal">Tatkaal</label>
+        </div>
+      </div>
+      <a href="#">When to apply for Tatkaal?</a>
+    </div>
+
+    <!-- Applicant Category -->
+    <div class="form-group">
+      <label for="applicantCategory">Applicant Category <span class="required">*</span></label>
+      <div class="radio-group" id="applicantCategory">
+        <div class="radio-inline">
+          <input type="radio" name="applicantCategory" id="minor" value="minor" />
+          <label for="minor">Minor</label>
+        </div>
+        <div class="radio-inline">
+          <input type="radio" name="applicantCategory" id="adult" value="adult" checked />
+          <label for="adult">Adult</label>
+        </div>
+        <div class="radio-inline">
+          <input type="radio" name="applicantCategory" id="senior" value="senior" />
+          <label for="senior">Senior Citizen</label>
+        </div>
+      </div>
+      <a href="#">Determine Your Category</a>
+    </div>
+
+    <!-- Non-ECR Eligibility -->
+    <div class="form-group">
+      <label for="nonEcr">Is applicant eligible for Non-ECR category? <span class="required">*</span></label>
+      <div class="radio-group" id="nonEcr">
+        <div class="radio-inline">
+          <input type="radio" name="nonEcr" id="nonEcrYes" value="yes" />
+          <label for="nonEcrYes">Yes</label>
+        </div>
+        <div class="radio-inline">
+          <input type="radio" name="nonEcr" id="nonEcrNo" value="no" checked />
+          <label for="nonEcrNo">No</label>
+        </div>
+      </div>
+      <a href="#">Documents Required for Non-ECR</a>
+    </div>
+
+    <!-- Dynamic Section: Additional Options for Non-ECR -->
+    <div id="nonEcrOptions" class="dynamic-section" style="display: none;">
+      <p><strong>Additional Documents for Non-ECR Applicants:</strong></p>
+      <ul>
+        <li>Birth Certificate</li>
+        <li>Proof of Residence</li>
+        <li>Educational Certificate</li>
+      </ul>
+    </div>
+
+    <!-- Dynamic Section: Additional Options for Minor -->
+    <div id="minorOptions" class="dynamic-section" style="display: none;">
+      <p><strong>Minor Applicant Additional Details:</strong></p>
+      <div class="form-group">
+        <label for="guardianName">Guardian's Name <span class="required">*</span></label>
+        <input type="text" id="guardianName" name="guardianName" placeholder="Enter guardian's name">
+      </div>
+    </div>
+
+    <!-- Note Section -->
+    <div class="note">
+      <p><strong>Note:</strong> Applicants are required to furnish original documents along with one set of self-attested photocopies of the same at the Passport Seva Kendra (PSK) for processing.</p>
+    </div>
+
+    <!-- Marriage, Divorce and Separated Case -->
+    <div class="marriage-section">
+      <p><strong>Marriage, Divorce and Separated Case</strong></p>
+      <p>Please provide one of the following for name in passport:</p>
+      <ul>
+        <li>MARRIAGE CERTIFICATE</li>
+        <li>Joint Photo Declaration signed by both husband and wife</li>
+      </ul>
+    </div>
+
+    <!-- Buttons -->
+    <div class="buttons">
+      <button type="button" class="btn-back" onclick="goBack()">Back</button>
+      <button type="button" class="btn-continue" onclick="submitForm()">Continue</button>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>&copy; 2025 Passport Automation System | All Rights Reserved</p>
+  </div>
+
+  <script>
+    function toggleDynamicSections() {
+      const nonEcrYes = document.getElementById('nonEcrYes');
+      const minorOption = document.getElementById('minor');
+      document.getElementById('nonEcrOptions').style.display = nonEcrYes.checked ? 'block' : 'none';
+      document.getElementById('minorOptions').style.display = minorOption.checked ? 'block' : 'none';
+    }
+
+    function goBack() {
+      window.history.back();
+    }
+
+    function submitForm() {
+      alert("Continue button clicked. You can now proceed to submit form data or redirect to another page.");
+      // window.location.href = "nextPage.html"; // Example redirect
+    }
+
+    document.querySelectorAll('input[name="nonEcr"]').forEach(radio => {
+      radio.addEventListener('change', toggleDynamicSections);
+    });
+
+    document.querySelectorAll('input[name="applicantCategory"]').forEach(radio => {
+      radio.addEventListener('change', toggleDynamicSections);
+    });
+
+    document.addEventListener('DOMContentLoaded', toggleDynamicSections);
+  </script>
+
+</body>
+</html>

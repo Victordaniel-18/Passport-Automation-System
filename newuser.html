@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>New User Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .header {
+            background-color: #ffcc00;
+            padding: 20px;
+            text-align: center;
+            font-size: 2em;
+            font-weight: bold;
+            color: #000;
+        }
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            flex: 1;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #ffcc00;
+            color: #000;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1.1em;
+        }
+        button:hover {
+            background-color: #e6b800;
+        }
+        .captcha {
+            margin-top: 10px;
+        }
+        .captcha-box {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #000;
+            background-color: #ddd;
+            display: inline-block;
+            padding: 10px;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">Passport Seva</div>
+    <div class="container">
+        <h2>New User Registration</h2>
+        <form id="registrationForm" action="newuser.php" method="POST" onsubmit="return validateCaptcha();">
+            <div class="form-group">
+                <label for="state">Passport Office:</label>
+                <select id="state" name="state" required>
+                    <option value="">Select Office</option>
+                    <option value="Delhi">Vijayawada</option>
+                    <option value="Mumbai">Visakhapatnam</option>
+                    <option value="Chennai">Chennai</option>
+                    <option value="Kolkata">Kolkata</option>
+                    <option value="pune">pune</option>
+                    <option value="Trivandrum">Trivandrum</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="surname">Surname:</label>
+                <input type="text" id="surname" name="surname" required>
+            </div>
+            <div class="form-group">
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" name="dob" required>
+            </div>
+            <div class="form-group">
+                <label for="email">E-Mail ID:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label>Login ID same as Email?</label>
+                <label><input type="radio" name="same_as_email" value="yes" id="yes" onclick="toggleLoginId()"> YES</label>
+                <label><input type="radio" name="same_as_email" value="no" id="no" onclick="toggleLoginId()" checked> NO</label>
+            </div>
+            <div class="form-group" id="login_id_group">
+                <label for="login_id">Login ID:</label>
+                <input type="text" id="login_id" name="login_id" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="confirm_password">Confirm Password:</label>
+                <input type="password" id="confirm_password" name="confirm_password" required>
+            </div>
+            <div class="form-group">
+                <label for="hint_question">Hint Question:</label>
+                <select id="hint_question" name="hint_question" required>
+                    <option value="">Select a Question</option>
+                    <option value="birth_city">Birth City</option>
+                    <option value="fav_food">Favourite Food</option>
+                    <option value="first_school">First School</option>
+                    <option value="fav_color">Favourite Colour</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="hint_answer">Hint Answer:</label>
+                <input type="text" id="hint_answer" name="hint_answer" required>
+            </div>
+            <div class="form-group captcha">
+                <label>Enter Characters displayed:</label>
+                <span id="captcha-text" class="captcha-box"></span>
+                <button type="button" onclick="generateCaptcha()">&#x21bb;</button>
+                <input type="text" id="captcha" name="captcha" required>
+            </div>
+            <button type="submit">Submit</button>
+            <button type="reset">Clear</button>
+        </form>
+    </div>
+    <p>Already have an account? <a href="welcome.html">Login</a></p>
+    <div class="footer">
+        <p>&copy; 2025 Passport Automation System | All Rights Reserved</p>
+    </div>
+    <script>
+        function generateCaptcha() {
+            const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            let captcha = "";
+            for (let i = 0; i < 6; i++) {
+                captcha += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            document.getElementById("captcha-text").textContent = captcha;
+        }
+        function validateCaptcha() {
+            const enteredCaptcha = document.getElementById("captcha").value;
+            const actualCaptcha = document.getElementById("captcha-text").textContent;
+            if (enteredCaptcha !== actualCaptcha) {
+                alert("Incorrect CAPTCHA. Please try again.");
+                generateCaptcha();
+                return false;
+            }
+            return true;
+        }
+        function toggleLoginId() {
+            let email = document.getElementById("email").value;
+            if (document.getElementById("yes").checked) {
+                document.getElementById("login_id").value = email;
+                document.getElementById("login_id").readOnly = true;
+            } else {
+                document.getElementById("login_id").value = "";
+                document.getElementById("login_id").readOnly = false;
+            }
+        }
+        window.onload = generateCaptcha;
+    </script>
+</body>
+</html>

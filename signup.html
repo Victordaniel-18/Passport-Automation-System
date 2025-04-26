@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passport Automation System - Sign Up</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+    .background-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("C:\Users\tadip\OneDrive\Documents\OneDrive\Desktop\SEAD project\passport.jpg") no-repeat center center fixed;
+      background-size: cover;
+      filter: blur(5px);
+      z-index: -1;
+    }
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+    }
+    .container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 2;
+      width: 100%;
+      max-width: 400px;
+    }
+    h1 {
+      font-size: 4em;
+      font-weight: bold;
+      color: #ffcc00;
+      margin-bottom: 30px;
+    }
+    .form-container {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+    }
+    .form-container input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 1em;
+    }
+    .form-container button {
+      width: 100%;
+      padding: 10px;
+      background-color: #ffcc00;
+      color: black;
+      border: none;
+      font-size: 1.2em;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .form-container button:hover {
+      background-color: #ffaa00;
+    }
+    .form-links {
+      margin-top: 20px;
+    }
+    .form-links a {
+      color: #ffcc00;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .form-links a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <!-- Background image and overlay -->
+  <div class="background-image"></div>
+  <div class="overlay"></div>
+  
+  <div class="container">
+    <h1>Passport</h1>
+    <div class="form-container" id="signup-form">
+      <h2>Sign Up</h2>
+      <form action="signup.php" method="POST">
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+        <button type="submit">Sign Up</button>
+      </form>
+      <div class="form-links">
+        <p>Already have an account? <a href="loginweb.html">Login</a></p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
